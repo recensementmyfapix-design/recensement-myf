@@ -1,5 +1,5 @@
 // Fonctionnement hors connexion : l'application, l'imagerie et les bibliothèques restent disponibles sur le terrain
-const CACHE = "zai-myf-v3";
+const CACHE = "zai-myf-v5";
 const CORE = ["./", "./index.html", "./config.js", "./sat17.jpg", "./sat15.jpg", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./fonts/LiberationSans-Regular.ttf", "./fonts/LiberationSans-Bold.ttf", "./fonts/LiberationSans-Italic.ttf"];
 self.addEventListener("install", (e) => e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting())));
 self.addEventListener("activate", (e) => e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim())));
